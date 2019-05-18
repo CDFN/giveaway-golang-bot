@@ -11,18 +11,18 @@ func sendMessage(session *discordgo.Session, channelID string, message string) s
 	messageCreate, err := session.ChannelMessageSend(channelID, message)
 	checkErr("Błąd podczas wysyłania wiadomości", err)
 	return messageCreate.ID
-	}
+}
 
 func resolveGiveaway() {
 	Participants := getAllConfirmedUsers(Thxs)
 
 	if !(len(Participants) > 0) {
-		sendMessage(Session, "578612032052396052", "Brak uczestników!")
+		sendMessage(Session, GiveawayChannelID, "There was no participants! \\:(")
 		return
 	}
 
 	randomNumber := rand.Intn(len(Participants))
-	sendMessage(Session, "578612032052396052", "Wygrany: "+Participants[randomNumber].Username)
+	sendMessage(Session, GiveawayChannelID, "Winner: "+Participants[randomNumber].Username)
 	Thxs = make([]Thx, 0)
 }
 

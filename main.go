@@ -16,6 +16,7 @@ var (
 	GiveawayHours      int
 	GiveawayMinutes    int
 	GiveawaySeconds    int
+	GiveawayChannelID  string
 	AcceptingEnabled   bool
 	RoleNeededToAccept string
 	Thxs               []Thx
@@ -46,9 +47,6 @@ func main() {
 	err = dg.Close()
 	checkErr("Error while closing session", err)
 }
-
-// This function will be called (due to AddHandler above) every time a new
-// message is created on any channel that the authenticated bot has access to.
 
 
 

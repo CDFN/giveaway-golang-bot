@@ -7,6 +7,7 @@ type Config struct{
 	Hours              int    `yaml:"giveawayHours"`
 	Minutes            int    `yaml:"giveawayMinutes"`
 	Seconds            int    `yaml:"giveawaySeconds"`
+	ChannelID          string `yaml:"giveawayChannel"`
 	Token              string `yaml:"botToken"`
 	AcceptingEnabled   bool   `yaml:"acceptingEnabled"`
 	RoleNeededToAccept string `yaml:"roleNeededToAccept"`

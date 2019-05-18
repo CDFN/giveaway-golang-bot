@@ -21,6 +21,7 @@ func loadConfig(){
 	GiveawayHours = config.Hours
 	GiveawayMinutes = config.Minutes
 	GiveawaySeconds = config.Seconds
+	GiveawayChannelID = config.ChannelID
 	AcceptingEnabled = config.AcceptingEnabled
 	RoleNeededToAccept = config.RoleNeededToAccept
 
