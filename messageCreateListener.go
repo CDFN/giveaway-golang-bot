@@ -34,9 +34,22 @@ func messageCreate(session *discordgo.Session, message *discordgo.MessageCreate)
 				sendMessage(session, message.ChannelID, "Dont be like that! You cant thank yourself \\:)")
 				return
 			}
-			Participants = append(Participants, mention.Username)
-			sendMessage(session, message.ChannelID, "Participants: "+strings.Join(Participants, ", "))
+			if mention.Bot{
+				sendMessage(session, message.ChannelID, "You cant thank bot! They are kind enough \\:)")
+				return
+			}
 
+			if AcceptingEnabled{
+				messageID := sendMessage(session, message.ChannelID, message.Author.Username + " wants to thank "+mention.Username)
+				err := session.MessageReactionAdd(message.ChannelID, messageID, "✅")
+				checkErr("Error while adding reaction to thx message", err)
+				err = session.MessageReactionAdd(message.ChannelID, messageID, "❌")
+				checkErr("Error while adding reaction to thx message", err)
+				Thxs = append(Thxs, Thx{messageID, Waiting, message.Author, mention})
+			}else{
+				messageID := sendMessage(session, message.ChannelID, message.Author.Username + " thanked "+mention.Username)
+				Thxs = append(Thxs, Thx{messageID, Accepted, message.Author, mention})
+			}
 		}
 
 	}

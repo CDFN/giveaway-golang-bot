@@ -1,9 +1,8 @@
 package main
 
-import  (
+import (
 	"fmt"
 	"github.com/bwmarrin/discordgo"
-	"github.com/robfig/cron"
 	"os"
 	"os/signal"
 	"syscall"
@@ -11,7 +10,6 @@ import  (
 
 // Variables used for command line parameters
 var (
-	Participants       []string
 	Session            *discordgo.Session
 	Token              string
 	Prefix             string
@@ -20,6 +18,7 @@ var (
 	GiveawaySeconds    int
 	AcceptingEnabled   bool
 	RoleNeededToAccept string
+	Thxs               []Thx
 	)
 
 
@@ -31,6 +30,7 @@ func main() {
 	// Register the messageCreate func as a callback for MessageCreate events.
 	dg.AddHandler(messageCreate)
 	dg.AddHandler(botEnable)
+	dg.AddHandler(reactionAdd)
 	// Open a websocket connection to Discord and begin listening.
 	err = dg.Open()
 	checkErr("Error while opening connection", err)
