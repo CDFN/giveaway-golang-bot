@@ -14,7 +14,7 @@ you must also config your bot.
 1. Rename `config.yml.default` to `config.yml`
 2. Set `prefix` to your prefix. Default value: `!`
 3. Set `giveawayHours` to hour, when bot should resolve giveaway. Default value: `18`
-   **NOTE!** USE VALUES IN 24 HOUR FORMAT
+   **NOTE!** USE VALUES IN 24 HOURS FORMAT
 4. Set `giveawayMinutes` to minute, when bot should resolve giveaway. Default value: `0`
 5. Set `giveawaySeconds` to second, when bot should resolve giveaway. Default value: `0`
 6. Set `botToken` to your bot's token. See [this](https://discordapp.com/developers/applications/).
