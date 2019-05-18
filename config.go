@@ -5,14 +5,6 @@ import (
 	"io/ioutil"
 )
 
-type Config struct{
-	Prefix  string `yaml:"prefix"`
-	Hours   int    `yaml:"giveawayHours"`
-	Minutes int    `yaml:"giveawayMinutes"`
-	Seconds int    `yaml:"giveawaySeconds"`
-	Token   string `yaml:"botToken"`
-}
-
 func loadConfig(){
 	var config Config
 	configFile, err := ioutil.ReadFile("config.yml")
@@ -29,4 +21,7 @@ func loadConfig(){
 	GiveawayHours = config.Hours
 	GiveawayMinutes = config.Minutes
 	GiveawaySeconds = config.Seconds
+	AcceptingEnabled = config.AcceptingEnabled
+	RoleNeededToAccept = config.RoleNeededToAccept
+
 }
