@@ -11,13 +11,15 @@ import  (
 
 // Variables used for command line parameters
 var (
-	Participants    []string
-	Session         *discordgo.Session
-	Token           string
-	Prefix          string
-	GiveawayHours   int
-	GiveawayMinutes int
-	GiveawaySeconds int
+	Participants       []string
+	Session            *discordgo.Session
+	Token              string
+	Prefix             string
+	GiveawayHours      int
+	GiveawayMinutes    int
+	GiveawaySeconds    int
+	AcceptingEnabled   bool
+	RoleNeededToAccept string
 	)
 
 
@@ -47,13 +49,7 @@ func main() {
 
 // This function will be called (due to AddHandler above) every time a new
 // message is created on any channel that the authenticated bot has access to.
-func botEnable(session *discordgo.Session, connect *discordgo.Ready){
-	Session = session
-	c := cron.New()
-	err := c.AddFunc(fmt.Sprintf("%d %d %d * * *", GiveawaySeconds, GiveawayMinutes, GiveawayHours), resolveGiveaway)
-	checkErr("Error while adding function to CRON!", err)
-	c.Start()
-}
+
 
 
 
