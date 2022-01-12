@@ -2,7 +2,15 @@ package main
 
 import "github.com/bwmarrin/discordgo"
 
-type Config struct{
+type Status int
+
+const (
+	Accepted = iota
+	Waiting  = iota
+	Declined = iota
+)
+
+type Config struct {
 	Prefix             string `yaml:"prefix"`
 	Hours              int    `yaml:"giveawayHours"`
 	Minutes            int    `yaml:"giveawayMinutes"`
@@ -13,7 +21,7 @@ type Config struct{
 	RoleNeededToAccept string `yaml:"roleNeededToAccept"`
 }
 
-type Thx struct{
+type Thx struct {
 	messageID string
 	status    Status
 	mentioner *discordgo.User
